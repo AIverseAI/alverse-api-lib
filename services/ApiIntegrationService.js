@@ -1,6 +1,8 @@
 const store = require("../store");
 const AuthService = require("./AuthService");
 const ChatBotService = require("./ChatBotService");
+const UserService = require('./UserService');
+
 /**
  *
  * @param {String} baseUrl - base api url
@@ -31,7 +33,8 @@ class ApiIntegrationService {
   getService(serviceName) {
     const serviceByServiceName = {
       auth: this.getAuthService,
-      chatBot: this.getChatBotService
+      chatBot: this.getChatBotService,
+      user: this.getUserService
     };
 
     const currentService = serviceByServiceName[serviceName].bind(this);
@@ -45,6 +48,10 @@ class ApiIntegrationService {
 
   getChatBotService() {
     return new ChatBotService()
+  }
+
+  getUserService() {
+    return new UserService()
   }
 }
 
