@@ -23,6 +23,11 @@ class ApiIntegrationService {
     ApiIntegrationService.instance = this;
   }
 
+  /**
+   * Availiable services - auth, chatBot
+   * @param {String} serviceName - name of needed service 
+   * @returns new service instance
+   */
   getService(serviceName) {
     const serviceByServiceName = {
       auth: this.getAuthService,
