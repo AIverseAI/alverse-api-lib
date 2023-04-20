@@ -35,9 +35,9 @@ class ChatBotService {
   }
 
   /**
-   * 
-   * @param {String} telegramId 
-   * @param {String} message 
+   *
+   * @param {String} telegramId
+   * @param {String} message
    */
   async getUserGeneration(telegramId, message) {
     try {
@@ -50,6 +50,14 @@ class ChatBotService {
       console.error(error);
     }
   }
+
+  async getMe() {
+    try {
+      await axios.get(`${store.baseUrl}/api/chat-bots/me`);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }
 
-module.exports = ChatBotService
+module.exports = ChatBotService;
