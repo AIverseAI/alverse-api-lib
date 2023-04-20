@@ -4,7 +4,7 @@ const store = require("../store");
 class UserService {
   async findUserById(id) {
     try {
-      await axios.post(`${store.baseUrl}/api/users/find-one?id=${id}`);
+      await axios.get(`${store.baseUrl}/api/users/find-one?id=${id}`);
     } catch (error) {
       console.error(error);
     }
@@ -12,11 +12,11 @@ class UserService {
 
   async findUserByTgId(id) {
     try {
-      await axios.post(`${store.baseUrl}/api/users/find-one?telegramId=${id}`);
+      await axios.get(`${store.baseUrl}/api/users/find-one?telegramId=${id}`);
     } catch (error) {
       console.error(error);
     }
   }
 }
 
-module.exports = UserService
+module.exports = UserService;
