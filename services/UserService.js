@@ -9,7 +9,7 @@ class UserService {
    */
   async deleteUser(userId) {
     try {
-      const data = await axios.delete(`${store.baseUrl}/api/users/${userId}`);
+      const { data } = await axios.delete(`${store.baseUrl}/api/users/${userId}`);
       return data
     } catch (error) {
       console.error(error);
@@ -34,7 +34,7 @@ class UserService {
         query += `?page=${page}`
       }
 
-      const data = await axios.get(query);
+      const { data } = await axios.get(query);
       return data
     } catch (error) {
       console.error(error);
@@ -48,7 +48,7 @@ class UserService {
    */
   async createNewUser(payload) {
     try {
-      const data = await axios.post(`${store.baseUrl}/api/users`, payload);
+      const { data } = await axios.post(`${store.baseUrl}/api/users`, payload);
       return data
     } catch (error) {
       console.error(error);
@@ -62,7 +62,7 @@ class UserService {
    */
   async findUserById(id) {
     try {
-      const data = await axios.get(`${store.baseUrl}/api/users/find-one?id=${id}`);
+      const { data } = await axios.get(`${store.baseUrl}/api/users/find-one?id=${id}`);
       return data
     } catch (error) {
       console.error(error);
@@ -76,7 +76,7 @@ class UserService {
    */
   async findUserByTgId(id) {
     try {
-      const data = await axios.get(`${store.baseUrl}/api/users/find-one?telegramId=${id}`);
+      const { data } = await axios.get(`${store.baseUrl}/api/users/find-one?telegramId=${id}`);
       return data
     } catch (error) {
       console.error(error);
