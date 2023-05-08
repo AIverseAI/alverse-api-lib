@@ -1,3 +1,12 @@
+/**
+ * @typedef userData
+ * @property {String} _id
+ * @property {String} name
+ * @property {String} role
+ * @property {String} email
+ * @property {String} telegramId
+ */
+
 const axios = require("../api/axiosInit");
 const store = require("../store");
 
@@ -5,7 +14,7 @@ class UserService {
   /**
    * 
    * @param {String} userId 
-   * @returns {Object} - { message, success: {true|false} }
+   * @returns {{message: String, success: Boolean}}
    */
   async deleteUser(userId) {
     try {
@@ -20,7 +29,7 @@ class UserService {
    * 
    * @param {Number} limit 
    * @param {Number} page 
-   * @returns {Array} [{ _id, name, role, email, telegramId }]
+   * @returns {userData[]}
    */
   async getUsers(limit, page) {
     try {
@@ -44,7 +53,7 @@ class UserService {
   /**
    * 
    * @param {Object} payload - { name, role, email, telegramId, password }
-   * @returns {Object} { name, role, email, telegramId, password }
+   * @returns {userData}
    */
   async createNewUser(payload) {
     try {
@@ -58,7 +67,7 @@ class UserService {
   /**
    * 
    * @param {String} id 
-   * @returns {Object} { _id, name, role, email, telegramId }
+   * @returns {userData}
    */
   async findUserById(id) {
     try {
@@ -72,7 +81,7 @@ class UserService {
   /**
    * 
    * @param {String} id 
-   * @returns {Object} { _id, name, role, email, telegramId }
+   * @returns {userData}
    */
   async findUserByTgId(id) {
     try {

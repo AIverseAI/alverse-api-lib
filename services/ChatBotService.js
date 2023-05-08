@@ -1,3 +1,18 @@
+/**
+ * @typedef afterDeleteData
+ * @property {String} message
+ * @property {Boolean} success
+ */
+
+/**
+ * @typedef userData
+ * @property {String} _id
+ * @property {String} name
+ * @property {String} role
+ * @property {String} email
+ * @property {String} telegramId
+ */
+
 const axios = require("../api/axiosInit");
 const store = require("../store");
 
@@ -5,7 +20,7 @@ class ChatBotService {
   /**
    *
    * @param {String} chatBotId
-   * @returns {Object} - {message, success: true|false }
+   * @returns {afterDeleteData}
    */
   async deleteChatBot(chatBotId) {
     try {
@@ -21,7 +36,7 @@ class ChatBotService {
   /**
    *
    * @param {Object} payload - chat bot payload
-   * @returns {Object} - { user: { _id, name, role, email, telegramId } }
+   * @returns {userData}
    */
   async registerChatBot(payload) {
     try {
@@ -39,6 +54,7 @@ class ChatBotService {
    *
    * @param {String} telegramId
    * @param {String} name
+   * @returns {Object}
    */
   async createUser(telegramId, name) {
     try {
@@ -57,7 +73,7 @@ class ChatBotService {
    *
    * @param {String} chatBotId
    * @param {Object} payload
-   * @returns {Object} - { message, success: true|false }
+   * @returns {afterDeleteData}
    */
   async editChatBotById(chatBotId, payload) {
     try {
@@ -127,6 +143,7 @@ class ChatBotService {
    *
    * @param {String} telegramId
    * @param {String} message
+   * @returns {{telegramId: String, message: String}}
    */
   async getUserGeneration(telegramId, message) {
     try {
@@ -182,6 +199,10 @@ class ChatBotService {
     }
   }
 
+  /**
+   * 
+   * @returns {Array}
+   */
   async getAllChatBotsChats() {
     try {
       const { data } = await axios.get(`${store.baseUrl}/api/chat-bots/chats/`);
@@ -191,6 +212,10 @@ class ChatBotService {
     }
   }
 
+  /**
+   * 
+   * @returns {Array}
+   */
   async getMe() {
     try {
       const { data } = await axios.get(`${store.baseUrl}/api/chat-bots/me`);

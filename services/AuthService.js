@@ -1,17 +1,21 @@
 const axios = require("axios");
 const store = require("../store");
 
-/**
- *  Admin authentication service, for correct work other modules, use login first
- * @param {String} username
- * @param {String} password
- */
 class AuthService {
+  /**
+   *
+   * @param {String} username
+   * @param {String} password
+   */
   constructor(username, password) {
     this.username = username;
     this.password = password;
   }
 
+  /**
+   * @description login user in system
+   * @returns {{accessToken: String, refreshToken: String}}
+   */
   async login() {
     const payload = { password: this.password, username: this.username };
     try {

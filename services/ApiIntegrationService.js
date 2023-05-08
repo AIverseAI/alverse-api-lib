@@ -1,3 +1,10 @@
+/**
+ * @typedef {Object} ApiServices
+ * @property {AuthService} auth - AuthService instance
+ * @property {ChatBotService} chatBot - ChatBotService instance
+ * @property {UserService} user - UserService instance
+ */
+
 const store = require("../store");
 const AuthService = require("./AuthService");
 const ChatBotService = require("./ChatBotService");
@@ -25,9 +32,15 @@ class ApiIntegrationService {
   }
 
   /**
-   * Availiable services - auth, chatBot
-   * @param {String} serviceName - name of needed service
-   * @returns new service instance
+   * @template {keyof ApiServices} K
+   * @param {K} serviceName - The name of the desired service. Possible values: "auth", "chatBot", "user".
+   * @returns {ApiServices[K]} An instance of the specified service with available class methods.
+   * @example
+   * const authService = ApiIntegrationService.getService("auth");
+   * 
+   * const userService = ApiIntegrationService.getService("user")
+   * 
+   * const userService = ApiIntegrationService.getService("chatBot")
    */
   getService(serviceName) {
     const serviceByServiceName = {
