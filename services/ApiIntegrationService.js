@@ -37,9 +37,9 @@ class ApiIntegrationService {
    * @returns {ApiServices[K]} An instance of the specified service with available class methods.
    * @example
    * const authService = ApiIntegrationService.getService("auth");
-   * 
+   *
    * const userService = ApiIntegrationService.getService("user")
-   * 
+   *
    * const userService = ApiIntegrationService.getService("chatBot")
    */
   getService(serviceName) {
@@ -54,15 +54,15 @@ class ApiIntegrationService {
     return currentService();
   }
 
-  #getAuthService() {
+  getAuthService() {
     return new AuthService(this.#userName, this.#password);
   }
 
-  #getChatBotService() {
+  getChatBotService() {
     return new ChatBotService();
   }
 
-  #getUserService() {
+  getUserService() {
     return new UserService();
   }
 }
