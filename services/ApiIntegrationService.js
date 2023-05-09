@@ -44,9 +44,9 @@ class ApiIntegrationService {
    */
   getService(serviceName) {
     const serviceByServiceName = {
-      auth: this.#getAuthService,
-      chatBot: this.#getChatBotService,
-      user: this.#getUserService,
+      auth: this.getAuthService,
+      chatBot: this.getChatBotService,
+      user: this.getUserService,
     };
 
     const currentService = serviceByServiceName[serviceName].bind(this);
