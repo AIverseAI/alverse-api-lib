@@ -1,3 +1,9 @@
+# 1.1.2
+- Renaming: botService.findOneChatBotByTgId -> findOneChatByTgId,
+            updateChatBot -> updateTelegramChat,
+            updateChatBot -> paylod - payload
+
+
 # 1.1.1
 - Update jsdocs comments
 

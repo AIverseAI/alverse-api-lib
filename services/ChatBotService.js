@@ -93,11 +93,11 @@ class ChatBotService {
    * @param {Object} paylod
    * @returns {Object}
    */
-  async updateChatBot(telegramId, paylod) {
+  async updateTelegramChat(telegramId, payload) {
     try {
       const { data } = await axios.patch(
         `${store.baseUrl}/api/chat-bots/chats/telegram/${telegramId}`,
-        paylod
+        payload
       );
       return data;
     } catch (error) {
@@ -163,7 +163,7 @@ class ChatBotService {
    *
    * @param {String} telegramId
    */
-  async findOneChatBotByTgId(telegramId) {
+  async findOneChatByTgId(telegramId) {
     try {
       const { data } = await axios.get(
         `${store.baseUrl}/api/chat-bots/chats/telegram/find-one?telegramId=${telegramId}`
