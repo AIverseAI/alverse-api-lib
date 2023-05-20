@@ -269,7 +269,7 @@ class ChatBotService {
    * @param {String} subscriptionType
    * @returns {Object}
    */
-  async addBuyedMessagesForUser(telegramId, subscriptionType) {
+  async updateUserSubscription(telegramId, subscriptionType) {
     try {
       const { data } = await axios.post(
         `${store.baseUrl}/api/chat-bots/update-subscriptions/telegram`,
