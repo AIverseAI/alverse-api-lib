@@ -334,7 +334,7 @@ class ChatBotService {
     try {
       const { data } = await axios.post(
         `${store.baseUrl}/api/chat-bots/orders/status-success`,
-        { telegramId }
+        { orderId }
       );
 
       return data;
