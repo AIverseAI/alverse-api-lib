@@ -200,7 +200,7 @@ class ChatBotService {
   }
 
   /**
-   * 
+   *
    * @returns {Array}
    */
   async getAllChatBotsChats() {
@@ -213,12 +213,130 @@ class ChatBotService {
   }
 
   /**
-   * 
+   *
    * @returns {Array}
    */
   async getMe() {
     try {
       const { data } = await axios.get(`${store.baseUrl}/api/chat-bots/me`);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  /**
+   *
+   * @param {String} telegramId
+   * @param {String} amount
+   * @returns {Object}
+   */
+  async addFreeMessagesForUser(telegramId, amount) {
+    try {
+      const { data } = await axios.post(
+        `${store.baseUrl}/api/chat-bots/add-user-messages/free/telegram`,
+        { telegramId, amount }
+      );
+
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  /**
+   *
+   * @param {String} telegramId
+   * @param {String} amount
+   * @returns {Object}
+   */
+  async addBuyedMessagesForUser(telegramId, amount) {
+    try {
+      const { data } = await axios.post(
+        `${store.baseUrl}/api/chat-bots/add-user-messages/buyed/telegram`,
+        { telegramId, amount }
+      );
+
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  /**
+   *
+   * @param {String} telegramId
+   * @param {String} subscriptionType
+   * @returns {Object}
+   */
+  async addBuyedMessagesForUser(telegramId, subscriptionType) {
+    try {
+      const { data } = await axios.post(
+        `${store.baseUrl}/api/chat-bots/update-subscriptions/telegram`,
+        { telegramId, subscriptionType }
+      );
+
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  /**
+   *
+   * @param {String} telegramId
+   * @param {String} title
+   * @param {String} description
+   * @param {String} currency
+   * @param {Number} price_amount
+   * @param {String} price_label
+   * @param {String} type
+   * @param {Number} amount
+   * @returns {Object} Order object
+   */
+  async createOrderForTelegramUser(
+    telegramId,
+    title,
+    description,
+    currency,
+    price_amount,
+    price_label,
+    type,
+    amount
+  ) {
+    try {
+      const { data } = await axios.post(
+        `${store.baseUrl}/api/chat-bots/orders/create/telegram`,
+        {
+          telegramId,
+          title,
+          description,
+          currency,
+          price_amount,
+          price_label,
+          type,
+          amount,
+        }
+      );
+
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  /**
+   *
+   * @param {String} orderId
+   * @returns {Object} Order object
+   */
+  async orderStatusSuccess(orderId) {
+    try {
+      const { data } = await axios.post(
+        `${store.baseUrl}/api/chat-bots/orders/status-success`,
+        { telegramId }
+      );
+
       return data;
     } catch (error) {
       console.error(error);
